@@ -1,6 +1,8 @@
 import os
 import shutil
 import sys
+
+#***********
 #Все функции
 def get_name_func(type):
     name = input(f'Введите имя {type}:\n')

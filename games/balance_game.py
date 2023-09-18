@@ -2,7 +2,7 @@
 def incr_balance(current_balance):
     current_balance += int(input('Введите сумму для пополнения:\n'))
     return  current_balance
-#Функция покупки
+#Функция покупки модифицированная
 def purchace(current_balance,current_history):
     price_of_purch = int(input('Введите сумму для покупки:\n'))
     if price_of_purch > current_balance:

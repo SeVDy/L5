@@ -41,7 +41,7 @@ celebrity_names = [
 ]
 
 
-# Викторина
+# Викторина игра
 def victory_game():
     while True:
         # Инициализация переменных
