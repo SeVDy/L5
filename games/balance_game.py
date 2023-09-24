@@ -12,7 +12,7 @@ def purchace(current_balance,current_history):
         current_balance -= price_of_purch
         current_history[name_of_purch] = price_of_purch
     return current_balance, current_history
-#Функция просмотра истории
+#Функция просмотра истории покупок
 def history_of_purchaces(current_history):
     print('История покупок:')
     for i, j in current_history.items():
