@@ -5,14 +5,14 @@ import sys
 
 # Все функции
 
-def get_name_func(type):
-    name = input(f'Введите имя {type}:\n')
+def get_name_func(type_obj):
+    name = input(f'Введите имя {type_obj}:\n')
     return name
 
 
 def get_type_file():
-    type = input(f'Введите расширение файла:\n')
-    return type
+    type_obj = input(f'Введите расширение файла:\n')
+    return type_obj
 
 
 def create_folder(folder_name):
@@ -43,7 +43,7 @@ def create_file():
     file_name = get_name_func('файла') + get_type_file()
     if file_name not in os.listdir():
         new_file = open(file_name, 'x')
-        new_file.close
+        new_file.close()
         print('Файл создан!')
     else:
         print('Файл с таким именем существует!')
@@ -74,6 +74,32 @@ def copy_file():
 
 def list_folder():
     print(os.listdir())
+
+
+def save_list_folder(file_name):
+    count = 0
+    content_folder = os.listdir()
+    f = open(file_name, 'w')
+    f.write('files:')
+    for i in content_folder:
+        if ('.' in i and '.' != i[0]) or '.git' == i[0:4]:
+            if count == 0:
+                f.write(i)
+            else:
+                f.write(',' + i)
+            count += 1
+    count = 0
+    f.write('\nfolders:')
+    for i in content_folder:
+        if ('.' not in i or '.' == i[0]) and '.git' != i[0:4]:
+            if count == 0:
+                f.write(i)
+            else:
+                f.write(',' + i)
+            count += 1
+    f.close()
+    print('Содержимое папки сохранено!')
+    return 'ok'
 
 
 def list_only_folder():
