@@ -10,14 +10,15 @@ while True:
     print('5.Удалить файл')
     print('6.Копировать файл')
     print('7.Просмотр содержимого рабочей директории')
-    print('8.Посмотреть только папки')
-    print('9.Посмотреть только файлы')
-    print('10.Просмотр информации о ОС')
-    print('11.Создатель программы')
-    print('12.Играть в викторину')
-    print('13.Мой банковйский счет')
-    print('14.Смена рабочей директории')
-    print('15.Выход')
+    print('8.Сохранить содержимое папки в файл')
+    print('9.Посмотреть только папки')
+    print('10.Посмотреть только файлы')
+    print('11.Просмотр информации о ОС')
+    print('12.Создатель программы')
+    print('13.Играть в викторину')
+    print('14.Мой банковйский счет')
+    print('15.Смена рабочей директории')
+    print('16.Выход')
 
     user_choose = input('Введите номер пункта:\n')
     # Выбор
@@ -44,20 +45,22 @@ while True:
         case '7':
             list_folder()
         case '8':
-            list_only_folder()
+            save_list_folder('listdir.txt')
         case '9':
-            list_only_files()
+            list_only_folder()
         case '10':
-            system_info()
+            list_only_files()
         case '11':
-            user_info()
+            system_info()
         case '12':
-            victory_game()
+            user_info()
         case '13':
-            balance_game()
+            victory_game()
         case '14':
-            change_directory()
+            balance_game()
         case '15':
+            change_directory()
+        case '16':
             exit()
         case _:
             pass
