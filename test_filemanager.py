@@ -2,12 +2,59 @@ from MyFunc import *
 from games.balance_game import *
 import os
 
+# Проверка функции create_folder
+assert create_folder('111') == 'Папка создана!' and '111' in os.listdir(), \
+    'Ошибка при создании папки'
+assert create_folder('111') == 'Папка с таким именем уже существует!' and '111' in os.listdir(), \
+    'Ошибка проверки дубликатов'
 
-assert create_folder('111') == 'Папка создана!' and '111' in os.listdir()
-assert copy_folder('111', '222') == 'Копия создана!' and '222' in os.listdir()
-assert delete_folder('111') == 'Папка удалена!' or 'Папка с таким именем не найдена!'
-assert delete_folder('222') == 'Папка удалена!' or 'Папка с таким именем не найдена!'
-assert save_list_folder('123.txt') == 'ok' and '123.txt' in os.listdir()
+# Проверка функции copy_folder
+assert copy_folder('111', '222') == 'Копия создана!' and '222' in os.listdir(), \
+    'Ошибка при создании копии папки'
+assert copy_folder('1111', '2222') == 'Папки с таким именем не существует!', \
+    'Ошибка при поиске копируемого элемента'
+assert copy_folder('111', '222') == 'Папка с таким именем существует!', \
+    'Ошибка при проверки копии на дубликаты'
+assert copy_folder('test_filemanager.py', '333') == 'Объект не является папкой!', \
+    'Ошибка при проверки копии, что она является папкой'
+
+# Проверка функции delete_folder
+assert delete_folder('111') == 'Папка удалена!' or 'Папка с таким именем не найдена!', \
+    'Ошибка при удалении папки'
+assert delete_folder('222') == 'Папка удалена!' or 'Папка с таким именем не найдена!', \
+    'Ошибка при удалении папки'
+assert delete_folder('test_python.py') == 'Объект не является папкой!', \
+    'Ошибка при проверке что удаляемый объект является папкой'
+
+# Проверка функции create_file
+assert create_file('123123.txt') == 'Файл создан!', \
+    'Ошибка при создании файла'
+assert create_file('123123.txt') == 'Файл с таким именем существует!', \
+    'Ошибка при проверке на дупликаты'
+
+# Проверка функции copy_file
+assert copy_file('123123.txt', '222.txt') == 'Файл копирован!' and '222.txt' in os.listdir(), \
+    'Ошибка при копировании файла'
+# assert copy_file('123123.txt', '222.txt') == 'Файл с таким именем существует!', \
+#     'Ошибка при проверке на дупбликаты копируемого объекта'
+assert copy_file('123.txt', '321.txt') == 'Файл с таким именем не существует!', \
+    'Ошибка при копировании несуществующего файла'
+assert copy_file('games', '321.txt') == 'Объект не является файлом!',\
+    'Ошибка при копировании объекта не являющегося файлом'
+
+# Проверка функции delete_file
+assert delete_file('222.txt') == 'Файл удален!', \
+    'Ошибка при удалении файла'
+assert delete_file('123123.txt') == 'Файл удален!', \
+    'Ошибка при удалении файла'
+assert delete_file('123123.txt') == 'Файла с таким именем не существует!', \
+    'Ошибка при удалении несуществующего файла'
+assert delete_file('games') == 'Объект не является файлом!', \
+    'Ошибка при удалении объекта не являющегося файлом'
+
+# Проверка функции save_list_folder
+assert save_list_folder('123.txt') == 'Содержимое папки сохранено!' and '123.txt' in os.listdir()
 os.remove('123.txt')
-assert isinstance(incr_balance('balance_save.txt', 100), int)
 
+# Проверка функции incr_balance
+assert isinstance(incr_balance('balance_save.txt', 100), int)
